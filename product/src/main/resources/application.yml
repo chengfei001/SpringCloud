@@ -5,5 +5,10 @@ eureka:
 spring:
   application:
     name: prodoct
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/SpringCloud_Sell?characterEncoding=utf-8&useSSl=false
+    username: root
+    password: coffee
 server:
   port: 8961
