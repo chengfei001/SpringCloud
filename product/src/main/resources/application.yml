@@ -11,4 +11,4 @@ spring:
     username: root
     password: coffee
 server:
-  port: 8961
+  port: 8080
