@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -19,7 +17,7 @@ public class ProductInfoRepositoryTest {
     private ProductInfoRepository productInfoRepository;
 
     @Test
-    public void findByProductStatus() throws Exception{
+    public void findByProductStatus(){
 //        List<String>strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
 //        List<String> filtered = strings.stream().filter(string -> !string.isEmpty()).collect(Collectors.toList());
 //

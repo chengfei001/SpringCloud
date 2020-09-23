@@ -1,5 +1,8 @@
 package com.chengfei.order.dataobject;
 
+import lombok.Data;
+
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -10,33 +13,36 @@ import java.util.Date;
  * @authon: chengfei
  * @create: 2020/9/21
  */
+@Data
+@Entity
 public class OrderDetail {
     /**
      * 明细ID
      */
-    private String detail_id;
+    @Id
+    private String detailId;
     /** 订单ID*/
     private String orderId;
     /**
      * 商品ID
      */
-    private String product_id;
+    private String productId;
     /**
      * 商品名称
      */
-    private String product_name;
+    private String productName;
     /**
      * 商品单价
      */
-    private BigDecimal product_price;
+    private BigDecimal productPrice;
     /**
      * 商品数量
      */
-    private Integer product_quantity;
+    private Integer productQuantity;
     /**
      * 商品图标地址
      */
-    private String product_icon;
+    private String productIcon;
     /**
      * 订单创建时间
      */
