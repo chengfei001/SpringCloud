@@ -1,6 +1,7 @@
 package com.chengfei.order.repository;
 
 import com.chengfei.order.dataobject.OrderDetail;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,8 @@ public class OrderDetailRepositoryTest {
         orderDetail.setCreateTime(new Date());
         orderDetail.setUpdateTime(new Date());
 
-        orderDetailRepository.save(orderDetail);
+        OrderDetail result = orderDetailRepository.save(orderDetail);
+        Assert.assertNotNull(result);
 
     }
 }
