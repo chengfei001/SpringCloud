@@ -17,6 +17,7 @@ public enum ProductStatusEnum {
     ProductStatusEnum(Integer code, String message) {
         this.code = code;
         this.message = message;
+        String abc = "bac\r\n";
     }
 
 }
