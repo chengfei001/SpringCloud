@@ -29,7 +29,7 @@ public class OrderMasterRepositoryTest {
         orderMaster.setBuyerPhone("13501237777");
         orderMaster.setOrderAmount(new BigDecimal("99.1"));
         orderMaster.setOrderStatus(OrderStatusEnum.NEW.getCode());
-        orderMaster.setPayStatus(PayStatusEnum.NEW.getCode());
+        orderMaster.setPayStatus(PayStatusEnum.WAIT.getCode());
         orderMaster.setCreateTime(new Date());
         orderMaster.setUpdateTime(new Date());
 
