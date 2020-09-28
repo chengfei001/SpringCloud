@@ -10,6 +10,7 @@ import com.chengfei.order.service.OrderService;
 import com.chengfei.order.utils.KeyUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
@@ -19,6 +20,7 @@ import java.math.BigDecimal;
  * @authon: chengfei
  * @create: 2020/9/25
  */
+@Service
 public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderMasterRepository orderMasterRepository;

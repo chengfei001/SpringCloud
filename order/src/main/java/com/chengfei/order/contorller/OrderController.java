@@ -1,8 +1,18 @@
 package com.chengfei.order.contorller;
 
+import com.chengfei.order.VO.ResultVO;
+import com.chengfei.order.dto.OrderDTO;
+import com.chengfei.order.form.OrderForm;
+import com.chengfei.order.service.OrderService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
+import java.util.Map;
 
 /**
  * @program: SpringCloud
@@ -12,9 +22,20 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/order")
+@Slf4j
 public class OrderController {
-    @PostMapping("/create")
-    public void Create(){
+    @Autowired
+    private OrderService orderService;
 
+    @PostMapping("/create")
+    public ResultVO<Map<String, String>> create(@Valid OrderForm orderForm, BindingResult bindingResult) throws Exception {
+        if(bindingResult.hasErrors()){
+            log.error("【创建订单】参数不正确，orderForm={}", orderForm);
+            throw new Exception("参数不正确！"+bindingResult.getFieldError().getDefaultMessage());
+        }
+        OrderDTO orderDTO = null;
+        orderService.Create(orderDTO);
+
+        return  null;
     }
 }
