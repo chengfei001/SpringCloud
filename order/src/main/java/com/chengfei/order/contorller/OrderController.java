@@ -1,6 +1,7 @@
 package com.chengfei.order.contorller;
 
 import com.chengfei.order.VO.ResultVO;
+import com.chengfei.order.converter.OrderForm2OrderDTOConverter;
 import com.chengfei.order.dto.OrderDTO;
 import com.chengfei.order.form.OrderForm;
 import com.chengfei.order.service.OrderService;
@@ -33,7 +34,7 @@ public class OrderController {
             log.error("【创建订单】参数不正确，orderForm={}", orderForm);
             throw new Exception("参数不正确！"+bindingResult.getFieldError().getDefaultMessage());
         }
-        OrderDTO orderDTO = null;
+        OrderDTO orderDTO = OrderForm2OrderDTOConverter.convert(orderForm);
         orderService.Create(orderDTO);
 
         return  null;

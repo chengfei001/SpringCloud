@@ -15,7 +15,7 @@ import java.util.List;
  * @authon: chengfei
  * @create: 2020/9/20
  */
-
+@Service
 public class CategoreServiceImpl implements CategoreService {
     @Autowired
     private ProductCategoryRepository productCategoryRepository;

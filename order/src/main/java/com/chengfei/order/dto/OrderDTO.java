@@ -14,29 +14,29 @@ import java.util.List;
  */
 @Data
 public class OrderDTO {
-    private String detailId;
-    /** 订单ID*/
+    /** 订单id. */
     private String orderId;
-    /**
-     * 商品ID
-     */
-    private String productId;
-    /**
-     * 商品名称
-     */
-    private String productName;
-    /**
-     * 商品单价
-     */
-    private BigDecimal productPrice;
-    /**
-     * 商品数量
-     */
-    private Integer productQuantity;
-    /**
-     * 商品图标地址
-     */
-    private String productIcon;
+
+    /** 买家名字. */
+    private String buyerName;
+
+    /** 买家手机号. */
+    private String buyerPhone;
+
+    /** 买家地址. */
+    private String buyerAddress;
+
+    /** 买家微信Openid. */
+    private String buyerOpenid;
+
+    /** 订单总金额. */
+    private BigDecimal orderAmount;
+
+    /** 订单状态, 默认为0新下单. */
+    private Integer orderStatus;
+
+    /** 支付状态, 默认为0未支付. */
+    private Integer payStatus;
 
     private List<OrderDetail> orderDetailList;
 }
