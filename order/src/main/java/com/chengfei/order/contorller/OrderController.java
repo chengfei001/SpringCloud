@@ -5,6 +5,7 @@ import com.chengfei.order.converter.OrderForm2OrderDTOConverter;
 import com.chengfei.order.dto.OrderDTO;
 import com.chengfei.order.form.OrderForm;
 import com.chengfei.order.service.OrderService;
+import com.chengfei.order.utils.ResultVOUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
@@ -30,13 +31,13 @@ public class OrderController {
 
     @PostMapping("/create")
     public ResultVO<Map<String, String>> create(@Valid OrderForm orderForm, BindingResult bindingResult) throws Exception {
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             log.error("【创建订单】参数不正确，orderForm={}", orderForm);
-            throw new Exception("参数不正确！"+bindingResult.getFieldError().getDefaultMessage());
+            throw new Exception("参数不正确！" + bindingResult.getFieldError().getDefaultMessage());
         }
         OrderDTO orderDTO = OrderForm2OrderDTOConverter.convert(orderForm);
-        orderService.Create(orderDTO);
+        OrderDTO data = orderService.Create(orderDTO);
 
-        return  null;
+        return ResultVOUtil.success(data);
     }
 }
