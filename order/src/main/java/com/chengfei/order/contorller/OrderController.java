@@ -8,12 +8,14 @@ import com.chengfei.order.service.OrderService;
 import com.chengfei.order.utils.ResultVOUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.CollectionUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -36,8 +38,13 @@ public class OrderController {
             throw new Exception("参数不正确！" + bindingResult.getFieldError().getDefaultMessage());
         }
         OrderDTO orderDTO = OrderForm2OrderDTOConverter.convert(orderForm);
-        OrderDTO data = orderService.Create(orderDTO);
-
-        return ResultVOUtil.success(data);
+        if (CollectionUtils.isEmpty(orderDTO.getOrderDetailList())){
+            log.error("【创建订单】购物车不能为空");
+            throw new Exception("参数错误");
+        }
+        OrderDTO createResult = orderService.Create(orderDTO);
+        Map<String, String> map = new HashMap<>();
+        map.put("orderId", createResult.getOrderId());
+        return ResultVOUtil.success(map);
     }
 }
